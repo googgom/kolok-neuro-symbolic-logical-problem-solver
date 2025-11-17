@@ -13,6 +13,7 @@ def run_module(module_dir: str, input_data: str) -> str:
         input=input_data,
         text=True,
         capture_output=True,
+        encoding='utf-8',
     )
     if result.returncode != 0:
         print(f"Ошибка в модуле {module_dir}: {result.stderr}", file=sys.stderr)
@@ -20,12 +21,21 @@ def run_module(module_dir: str, input_data: str) -> str:
     return result.stdout.strip()
 
 def main():
-    # Пример: текст задачи можно передавать как аргумент или читать из stdin
-    if len(sys.argv) > 1:
-        user_input = sys.argv[1]
-    else:
-        print("Введите текст задачи (например, 'Сократ — человек. Все люди смертны. Докажи, что Сократ смертен.'):")
-        user_input = sys.stdin.read().strip()
+    # Проверяем наличие файла input.txt
+    input_file = "input.txt"
+    if not os.path.exists(input_file):
+        print(f"Ошибка: файл '{input_file}' не найден в корневой директории.", file=sys.stderr)
+        sys.exit(1)
+
+    # Считываем текст задачи из файла
+    with open(input_file, "r", encoding="utf-8") as f:
+        user_input = f.read().strip()
+
+    if not user_input:
+        print("Ошибка: файл 'input.txt' пуст.", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"[DEBUG] Входные данные: {user_input}")
 
     # 1. Перевод с русского на логику
     logic_formulas = run_module("1-rus-to-log", user_input)
