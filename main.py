@@ -1,57 +1,89 @@
-import subprocess
-import sys
 import os
-
-def run_module(module_dir: str, input_data: str) -> str:
-    """
-    Запускает main.py из указанного каталога и передаёт input_data на stdin.
-    Возвращает stdout.
-    """
-    module_path = os.path.join(module_dir, "main.py")
-    result = subprocess.run(
-        [sys.executable, module_path],
-        input=input_data,
-        text=True,
-        capture_output=True,
-        encoding='utf-8',
-    )
-    if result.returncode != 0:
-        print(f"Ошибка в модуле {module_dir}: {result.stderr}", file=sys.stderr)
-        sys.exit(1)
-    return result.stdout.strip()
+import shutil
+import subprocess
 
 def main():
-    # Проверяем наличие файла input.txt
-    input_file = "input.txt"
-    if not os.path.exists(input_file):
-        print(f"Ошибка: файл '{input_file}' не найден в корневой директории.", file=sys.stderr)
-        sys.exit(1)
+    # Путь к текущему каталогу
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Считываем текст задачи из файла
-    with open(input_file, "r", encoding="utf-8") as f:
-        user_input = f.read().strip()
+    # Шаг 1: Копируем input.txt в 1-rus-to-log/input.txt
+    input_path = os.path.join(base_dir, "input.txt")
+    module1_input_path = os.path.join(base_dir, "1-rus-to-log", "input.txt")
 
-    if not user_input:
-        print("Ошибка: файл 'input.txt' пуст.", file=sys.stderr)
-        sys.exit(1)
+    if os.path.exists(input_path):
+        shutil.copy(input_path, module1_input_path)
+        print(f"Скопирован {input_path} в {module1_input_path}")
+    else:
+        print(f"Ошибка: файл {input_path} не найден.")
+        return
 
-    print(f"[DEBUG] Входные данные: {user_input}")
+    # Шаг 2: Запускаем main.py в каталоге 1-rus-to-log
+    module1_main_path = os.path.join(base_dir, "1-rus-to-log", "main.py")
+    if os.path.exists(module1_main_path):
+        subprocess.run(["python", module1_main_path], cwd=os.path.join(base_dir, "1-rus-to-log"))
+        print(f"Запущен {module1_main_path}")
+    else:
+        print(f"Ошибка: файл {module1_main_path} не найден.")
+        return
 
-    # 1. Перевод с русского на логику
-    logic_formulas = run_module("1-rus-to-log", user_input)
-    print(f"[DEBUG] Вывод 1-го модуля: {logic_formulas}")
+    # Шаг 3: Копируем output.txt из 1-rus-to-log в input.txt для 2-strict-resolution-engine
+    module1_output_path = os.path.join(base_dir, "1-rus-to-log", "output.txt")
+    module2_input_path = os.path.join(base_dir, "2-strict-resolution-engine", "input.txt")
 
-    # 2. Движок резолюций
-    proof_log = run_module("2-strict-resolution-engine", logic_formulas)
-    print(f"[DEBUG] Вывод 2-го модуля: {proof_log}")
+    if os.path.exists(module1_output_path):
+        shutil.copy(module1_output_path, module2_input_path)
+        print(f"Скопирован {module1_output_path} в {module2_input_path}")
+    else:
+        print(f"Ошибка: файл {module1_output_path} не найден.")
+        return
 
-    # 3. Перевод логики на русский
-    explanation = run_module("3-log-to-rus", proof_log)
-    print(f"[DEBUG] Вывод 3-го модуля: {explanation}")
+    # Шаг 4: Запускаем main.py в каталоге 2-strict-resolution-engine
+    module2_main_path = os.path.join(base_dir, "2-strict-resolution-engine", "main.py")
+    if os.path.exists(module2_main_path):
+        subprocess.run(["python", module2_main_path], cwd=os.path.join(base_dir, "2-strict-resolution-engine"))
+        print(f"Запущен {module2_main_path}")
+    else:
+        print(f"Ошибка: файл {module2_main_path} не найден.")
+        return
 
-    # Финальный вывод
-    print("\n--- Результат ---")
-    print(explanation)
+    # Шаг 5: Копируем output.txt из 2-strict-resolution-engine в input.txt для 3-log-to-rus
+    module2_output_path = os.path.join(base_dir, "2-strict-resolution-engine", "output.txt")
+    module3_input_path = os.path.join(base_dir, "3-log-to-rus", "input.txt")
+
+    if os.path.exists(module2_output_path):
+        shutil.copy(module2_output_path, module3_input_path)
+        print(f"Скопирован {module2_output_path} в {module3_input_path}")
+    else:
+        print(f"Ошибка: файл {module2_output_path} не найден.")
+        return
+
+    # Шаг 6: Запускаем main.py в каталоге 3-log-to-rus
+    module3_main_path = os.path.join(base_dir, "3-log-to-rus", "main.py")
+    if os.path.exists(module3_main_path):
+        subprocess.run(["python", module3_main_path], cwd=os.path.join(base_dir, "3-log-to-rus"))
+        print(f"Запущен {module3_main_path}")
+    else:
+        print(f"Ошибка: файл {module3_main_path} не найден.")
+        return
+
+    # Шаг 7: Копируем output.txt из 3-log-to-rus в output.txt текущего каталога
+    module3_output_path = os.path.join(base_dir, "3-log-to-rus", "output.txt")
+    final_output_path = os.path.join(base_dir, "output.txt")
+
+    if os.path.exists(module3_output_path):
+        shutil.copy(module3_output_path, final_output_path)
+        print(f"Скопирован {module3_output_path} в {final_output_path}")
+    else:
+        print(f"Ошибка: файл {module3_output_path} не найден.")
+        return
+
+    # Шаг 8: Выводим содержимое output.txt в терминал
+    if os.path.exists(final_output_path):
+        with open(final_output_path, "r", encoding="utf-8") as file:
+            print("\nСодержимое output.txt:")
+            print(file.read())
+    else:
+        print(f"Ошибка: файл {final_output_path} не найден.")
 
 if __name__ == "__main__":
     main()
