@@ -131,9 +131,19 @@ def resolution(clauses, max_steps=100):
                     log.append(f"Шаг {step}: Унификация {substitution} в {c1} и {c2}. Резолюция -> {new_clause}.")
                     step += 1
                     new_clauses.append(new_clause)
-        if not new_clauses:
+        if not new_clauses:#Если нет прогресса в итерации, то уже и не будет
             return False, log
         clauses += new_clauses
+    #Для возможных случаев, когда новые уникальные клаузы создаются, но решение не приближают
+    print("ВНИМАНИЕ: Превышено ограничение на количество итераций резолюции.")
+    print("Вероятно ответа не существует или время его нахождения слишком большое.")
+    print(f"На данный момент храниться {len(clauses)} клауз.")
+    print("Если хотите продолжить поиск противоречия введите 'continue'")
+    temp = input()
+    if temp == 'continue':#Если пользователь решит продолжить поиск
+        proof2, log2 = resolution(clauses)
+        log2 += log
+        return proof2, log2
     return False, log
 
 def read_clauses(filename):
@@ -166,12 +176,26 @@ def write_log(log, proof, filename):
 
 
 if __name__ == "__main__":
-    ''
+    #Прототип теста на бесконечные клаузы
+    clauses = [
+        # Базовые клаузы для бесконечного порождения
+        Clause([Literal("P", ["x"]), Literal("Q", ["x"], negated=True)]),
+        Clause([Literal("P", ["y"]), Literal("R", ["y"])]),
+        Clause([Literal("Q", ["z"]), Literal("R", ["z"], negated=True)]),
+        Clause([Literal("P", ["a"])]),
+        # Клаузы для генерации новых переменных и предикатов
+        Clause([Literal("R", ["u"]), Literal("P", ["v"]), Literal("S", ["u", "v"])]),
+        Clause([Literal("S", ["w", "t"]), Literal("Q", ["w"]), Literal("T", ["t"])]),
+        Clause([Literal("T", ["k"]), Literal("R", ["k"], negated=True)]),
+    ]
+
+    '''
     clauses = [
         Clause([Literal("Человек", ["x"], negated=True), Literal("Смертен", ["x"])]),
         Clause([Literal("Человек", ["Сократ"])]),
         Clause([Literal("Смертен", ["Сократ"], negated=True)]),
     ]
+    '''
     '''
     clauses = [
         Clause([Literal("Человек", ["x"], negated=True), Literal("Смертен", ["x"])]),
@@ -182,7 +206,9 @@ if __name__ == "__main__":
     ]
     '''
 
-    clauses = read_clauses("input.txt")
+    #Основной режим работы
+    #clauses = read_clauses("input.txt")
+
     #clauses = read_clauses("clauses.json")
     #write_clauses(clauses, "clauses.json")
     #write_clauses(clauses, "input.txt")
