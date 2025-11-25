@@ -177,6 +177,7 @@ def write_log(log, proof, filename):
 
 if __name__ == "__main__":
     #Прототип теста на бесконечные клаузы
+    '''
     clauses = [
         # Базовые клаузы для бесконечного порождения
         Clause([Literal("P", ["x"]), Literal("Q", ["x"], negated=True)]),
@@ -188,6 +189,7 @@ if __name__ == "__main__":
         Clause([Literal("S", ["w", "t"]), Literal("Q", ["w"]), Literal("T", ["t"])]),
         Clause([Literal("T", ["k"]), Literal("R", ["k"], negated=True)]),
     ]
+    '''
 
     '''
     clauses = [
@@ -196,7 +198,7 @@ if __name__ == "__main__":
         Clause([Literal("Смертен", ["Сократ"], negated=True)]),
     ]
     '''
-    '''
+    ''''''
     clauses = [
         Clause([Literal("Человек", ["x"], negated=True), Literal("Смертен", ["x"])]),
         Clause([Literal("Человек", ["Сократ"])]),
@@ -204,7 +206,7 @@ if __name__ == "__main__":
         Clause([Literal("Смертен", ["x"], negated=True), Literal("Бессмертен", ["x"], negated=True)]),
         Clause([Literal("Бессмертен", ["Платон"])]),
     ]
-    '''
+    ''''''
 
     #Основной режим работы
     #clauses = read_clauses("input.txt")
