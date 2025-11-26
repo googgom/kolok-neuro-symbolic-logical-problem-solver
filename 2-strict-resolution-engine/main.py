@@ -176,40 +176,8 @@ def write_log(log, proof, filename):
 
 
 if __name__ == "__main__":
-    #Прототип теста на бесконечные клаузы
-    '''
-    clauses = [
-        # Базовые клаузы для бесконечного порождения
-        Clause([Literal("P", ["x"]), Literal("Q", ["x"], negated=True)]),
-        Clause([Literal("P", ["y"]), Literal("R", ["y"])]),
-        Clause([Literal("Q", ["z"]), Literal("R", ["z"], negated=True)]),
-        Clause([Literal("P", ["a"])]),
-        # Клаузы для генерации новых переменных и предикатов
-        Clause([Literal("R", ["u"]), Literal("P", ["v"]), Literal("S", ["u", "v"])]),
-        Clause([Literal("S", ["w", "t"]), Literal("Q", ["w"]), Literal("T", ["t"])]),
-        Clause([Literal("T", ["k"]), Literal("R", ["k"], negated=True)]),
-    ]
-    '''
-
-    '''
-    clauses = [
-        Clause([Literal("Человек", ["x"], negated=True), Literal("Смертен", ["x"])]),
-        Clause([Literal("Человек", ["Сократ"])]),
-        Clause([Literal("Смертен", ["Сократ"], negated=True)]),
-    ]
-    '''
-    ''''''
-    clauses = [
-        Clause([Literal("Человек", ["x"], negated=True), Literal("Смертен", ["x"])]),
-        Clause([Literal("Человек", ["Сократ"])]),
-        Clause([Literal("Человек", ["Платон"])]),
-        Clause([Literal("Смертен", ["x"], negated=True), Literal("Бессмертен", ["x"], negated=True)]),
-        Clause([Literal("Бессмертен", ["Платон"])]),
-    ]
-    ''''''
-
     #Основной режим работы
-    #clauses = read_clauses("input.txt")
+    clauses = read_clauses("input.txt")
 
     #clauses = read_clauses("clauses.json")
     #write_clauses(clauses, "clauses.json")
