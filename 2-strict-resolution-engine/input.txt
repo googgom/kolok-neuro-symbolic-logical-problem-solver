@@ -1,0 +1,71 @@
+[
+    {
+        "literals": [
+            {
+                "predicate": "Человек",
+                "args": [
+                    "x"
+                ],
+                "negated": true
+            },
+            {
+                "predicate": "Смертен",
+                "args": [
+                    "x"
+                ],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Человек",
+                "args": [
+                    "Сократ"
+                ],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Человек",
+                "args": [
+                    "Платон"
+                ],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Смертен",
+                "args": [
+                    "x"
+                ],
+                "negated": true
+            },
+            {
+                "predicate": "Бессмертен",
+                "args": [
+                    "x"
+                ],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Бессмертен",
+                "args": [
+                    "Платон"
+                ],
+                "negated": false
+            }
+        ]
+    }
+]
