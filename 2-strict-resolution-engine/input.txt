@@ -1,0 +1,6 @@
+clauses = [
+    Clause([Literal("Продает", ["x"], negated=True), Literal("Покупает", ["x"], negated=True)]),
+    Clause([Literal("Покупает", ["x"], negated=True), Literal("Дурак", ["x"], negated=False)]),
+    Clause([Literal("Покупает", ["a"], negated=False)]),
+    Clause([Literal("Дурак", ["x"], negated=True), Literal("Продает", ["x"], negated=False)])
+]
