@@ -1,6 +1,157 @@
-clauses = [
-    Clause([Literal("Продает", ["x"], negated=True), Literal("Покупает", ["x"], negated=True)]),
-    Clause([Literal("Покупает", ["x"], negated=True), Literal("Дурак", ["x"], negated=False)]),
-    Clause([Literal("Покупает", ["a"], negated=False)]),
-    Clause([Literal("Дурак", ["x"], negated=True), Literal("Продает", ["x"], negated=False)])
+[
+    {
+        "literals": [
+            {
+                "predicate": "Акула",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "Рыба",
+                "args": ["x"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Акула",
+                "args": ["a"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Акула",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "Хищник",
+                "args": ["x"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Ест",
+                "args": ["x", "y"],
+                "negated": true
+            },
+            {
+                "predicate": "Рыба",
+                "args": ["y"],
+                "negated": true
+            },
+            {
+                "predicate": "Рыба",
+                "args": ["x"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Хищник",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "Ест",
+                "args": ["x", "y"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Ест",
+                "args": ["x", "y"],
+                "negated": true
+            },
+            {
+                "predicate": "Добр",
+                "args": ["x", "y"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Рыба",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "Акула",
+                "args": ["x"],
+                "negated": false
+            },
+            {
+                "predicate": "Добр",
+                "args": ["x", "y"],
+                "negated": false
+            },
+            {
+                "predicate": "Ребенок",
+                "args": ["x", "y"],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Ест",
+                "args": ["x", "y"],
+                "negated": true
+            },
+            {
+                "predicate": "Ребенок",
+                "args": ["x", "y"],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Рыба",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "Ребенок",
+                "args": ["x", "y"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Рыба",
+                "args": ["x"],
+                "negated": false
+            },
+            {
+                "predicate": "Добр",
+                "args": ["x", "y"],
+                "negated": false
+            },
+            {
+                "predicate": "Ребенок",
+                "args": ["x", "y"],
+                "negated": true
+            }
+        ]
+    }
 ]
