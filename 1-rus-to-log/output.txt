@@ -2,12 +2,12 @@
     {
         "literals": [
             {
-                "predicate": "Математик",
+                "predicate": "Лев",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Рационален",
+                "predicate": "Хищник",
                 "args": ["x"],
                 "negated": false
             }
@@ -16,7 +16,7 @@
     {
         "literals": [
             {
-                "predicate": "Математик",
+                "predicate": "Лев",
                 "args": ["a"],
                 "negated": false
             }
@@ -25,40 +25,12 @@
     {
         "literals": [
             {
-                "predicate": "Человек",
-                "args": ["b"],
-                "negated": false
-            },
-            {
-                "predicate": "Иррационален",
-                "args": ["b"],
-                "negated": false
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Рационален",
-                "args": ["x"],
-                "negated": false
-            },
-            {
-                "predicate": "Иррационален",
-                "args": ["x"],
-                "negated": true
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Человек",
+                "predicate": "Хищник",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Рационален",
+                "predicate": "ЕстМясо",
                 "args": ["x"],
                 "negated": false
             }
@@ -67,13 +39,36 @@
     {
         "literals": [
             {
-                "predicate": "Человек",
+                "predicate": "ЕстМясо",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Иррационален",
+                "predicate": "Вегетарианец",
                 "args": ["x"],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Вегетарианец",
+                "args": ["x"],
+                "negated": true
+            },
+            {
+                "predicate": "ЕстМясо",
+                "args": ["x"],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Вегетарианец",
+                "args": ["a"],
                 "negated": false
             }
         ]

@@ -1,10 +1,32 @@
 import os
 import shutil
 import subprocess
+import requests
+from numpy.random import random_integers
+
+from tests.problem import *
+import random
+
+
+
+def check_input():
+    if not os.path.exists("input.txt") or os.path.getsize("input.txt") == 0:
+        com = int(input("Выберите сложность(1-3):")) - 1
+        index = random.randint(1, 3)
+        index = index + com * 3 - 1
+        with open("input.txt", "w", encoding='utf-8') as f:
+            f.write(problem[index])
+        return index
+    else:
+        with open("input.txt", "r", encoding='utf-8') as f:
+            return f.read()
+
 
 def main():
     # Путь к текущему каталогу
     base_dir = os.path.dirname(os.path.abspath(__file__))
+
+    check_input()
 
     # Шаг 1: Копируем input.txt в 1-rus-to-log/input.txt
     input_path = os.path.join(base_dir, "input.txt")
