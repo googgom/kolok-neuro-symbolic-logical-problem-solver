@@ -2,12 +2,12 @@
     {
         "literals": [
             {
-                "predicate": "Акула",
+                "predicate": "Математик",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Рыба",
+                "predicate": "Рационален",
                 "args": ["x"],
                 "negated": false
             }
@@ -16,7 +16,7 @@
     {
         "literals": [
             {
-                "predicate": "Акула",
+                "predicate": "Математик",
                 "args": ["a"],
                 "negated": false
             }
@@ -25,12 +25,40 @@
     {
         "literals": [
             {
-                "predicate": "Акула",
+                "predicate": "Человек",
+                "args": ["b"],
+                "negated": false
+            },
+            {
+                "predicate": "Иррационален",
+                "args": ["b"],
+                "negated": false
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Рационален",
+                "args": ["x"],
+                "negated": false
+            },
+            {
+                "predicate": "Иррационален",
+                "args": ["x"],
+                "negated": true
+            }
+        ]
+    },
+    {
+        "literals": [
+            {
+                "predicate": "Человек",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Хищник",
+                "predicate": "Рационален",
                 "args": ["x"],
                 "negated": false
             }
@@ -39,118 +67,14 @@
     {
         "literals": [
             {
-                "predicate": "Ест",
-                "args": ["x", "y"],
-                "negated": true
-            },
-            {
-                "predicate": "Рыба",
-                "args": ["y"],
-                "negated": true
-            },
-            {
-                "predicate": "Рыба",
-                "args": ["x"],
-                "negated": false
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Хищник",
+                "predicate": "Человек",
                 "args": ["x"],
                 "negated": true
             },
             {
-                "predicate": "Ест",
-                "args": ["x", "y"],
-                "negated": false
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Ест",
-                "args": ["x", "y"],
-                "negated": true
-            },
-            {
-                "predicate": "Добр",
-                "args": ["x", "y"],
-                "negated": false
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Рыба",
-                "args": ["x"],
-                "negated": true
-            },
-            {
-                "predicate": "Акула",
+                "predicate": "Иррационален",
                 "args": ["x"],
                 "negated": false
-            },
-            {
-                "predicate": "Добр",
-                "args": ["x", "y"],
-                "negated": false
-            },
-            {
-                "predicate": "Ребенок",
-                "args": ["x", "y"],
-                "negated": true
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Ест",
-                "args": ["x", "y"],
-                "negated": true
-            },
-            {
-                "predicate": "Ребенок",
-                "args": ["x", "y"],
-                "negated": true
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Рыба",
-                "args": ["x"],
-                "negated": true
-            },
-            {
-                "predicate": "Ребенок",
-                "args": ["x", "y"],
-                "negated": false
-            }
-        ]
-    },
-    {
-        "literals": [
-            {
-                "predicate": "Рыба",
-                "args": ["x"],
-                "negated": false
-            },
-            {
-                "predicate": "Добр",
-                "args": ["x", "y"],
-                "negated": false
-            },
-            {
-                "predicate": "Ребенок",
-                "args": ["x", "y"],
-                "negated": true
             }
         ]
     }
